@@ -1,2 +1,0 @@
-# ehf
-Estribos Hermanos Flores
