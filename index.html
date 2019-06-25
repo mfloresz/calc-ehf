@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: whitesmoke;text-align: center">
+        <span class="navbar-brand">Estribos Hermanos Flores</span>
+    </nav>
+
+    <form style="padding: 25px">
+        <div class="row">
+            <div class="col">
+                <label>Pedido(Kg)</label>
+                <input type="text" class="form-control" placeholder="Ingrese cantidad solicitada">
+            </div>
+            <div class="col">
+                <label>Precio Cliente</label>
+                <input type="text" class="form-control" placeholder="25">
+            </div>
+        </div>
+        <div class="row" style="padding-top: 25px">
+            <div class="col">
+                <label>Costo Material</label>
+                <input type="text" class="form-control" placeholder="Costo de material">
+            </div>
+            <div class="col">
+                <label>Calcular</label>
+                <br>
+                <button type="submit" class="btn btn-secondary">Calcular Importe</button>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 25px">
+            <div class="col">
+                <label>Utilidad</label>
+                <input type="text" class="form-control" placeholder="0.00" readonly>
+            </div>
+            <div class="col">
+                <label>Importe Total</label>
+                <input type="text" class="form-control" style="background-color:rgb(103, 188, 241)" placeholder="0.00" readonly>
+            </div>
+        </div>
+    </form>
+    <hr>
+
+    <div class="card">
+        <div class="card-header">Estimación</div>
+        <div class="row" style="padding: 25px">
+            <div class="col">
+                <label>Utilidad</label>
+                <input type="text" class="form-control" placeholder="0.00" readonly>
+            </div>
+            <div class="col">
+                <label>Importe Total</label>
+                <input type="text" class="form-control" style="background-color:rgb(103, 188, 241)" placeholder="0.00" readonly>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
