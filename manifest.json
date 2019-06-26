@@ -2,7 +2,7 @@
     "lang" : "es",
     "name" : "Calculadora",
     "scope" : "/ehf/",
-    "display" : "browser",
+    "display" : "standalone",
     "start_url" : "https://mfloresz.github.io/ehf/",
     "short_name" : "Calculadora",
     "theme_color" : "transparent",
