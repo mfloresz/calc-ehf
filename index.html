@@ -11,7 +11,7 @@
     <link rel="manifest" href="https://mfloresz.github.io/ehf/manifest.json">
     <script>
     
-    // This is the "Offline page" service worker
+// This is the service worker with the Cache-first network
 
 // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 
@@ -23,13 +23,14 @@ if ("serviceWorker" in navigator) {
     // Register the service worker
     navigator.serviceWorker
       .register("pwabuilder-sw.js", {
-        scope: "./"
+        scope: "https://mfloresz.github.io/ehf/"
       })
       .then(function (reg) {
         console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
       });
   }
 }
+
 
     
     </script>
