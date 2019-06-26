@@ -13,4 +13,9 @@
     "prefer_related_applications" : "false",
     "generated" : "true",
     "icons" : [
+        {
+    "src": "https://mfloresz.github.io/ehf/square-png-25141.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }
     ]}
