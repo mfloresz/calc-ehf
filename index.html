@@ -2,116 +2,167 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calculadora</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://mfloresz.github.io/ehf/code.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Cotización EHF</title>
+
+    <!-- Favicon -->
+    <link href="https://mfloresz.github.io/ehf/assets/img/brand/favicon.png" rel="icon" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://mfloresz.github.io/ehf/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="https://mfloresz.github.io/ehf/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Argon CSS -->
+    <link type="text/css" href="https://mfloresz.github.io/ehf/assets/css/argon.css" rel="stylesheet">
+
     <link rel="manifest" href="https://mfloresz.github.io/ehf/manifest.json">
     <script>
-    
-// This is the service worker with the Cache-first network
+        // This is the service worker with the Cache-first network
 
-// Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+        // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 
-// Check compatibility for the browser we're running this in
-if ("serviceWorker" in navigator) {
-  if (navigator.serviceWorker.controller) {
-    console.log("[PWA Builder] active service worker found, no need to register");
-  } else {
-    // Register the service worker
-    navigator.serviceWorker
-      .register("pwabuilder-sw.js", {
-        scope: "https://mfloresz.github.io/ehf/"
-      })
-      .then(function (reg) {
-        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
-      });
-  }
-}
+        // Check compatibility for the browser we're running this in
+        if ("serviceWorker" in navigator) {
+            if (navigator.serviceWorker.controller) {
+                console.log("[PWA Builder] active service worker found, no need to register");
+            } else {
+                // Register the service worker
+                navigator.serviceWorker
+                    .register("pwabuilder-sw.js", {
+                        scope: "https://mfloresz.github.io/ehf/"
+                    })
+                    .then(function(reg) {
+                        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+                    });
+            }
+        }
     </script>
+
 
 </head>
 
-<body>
-    <nav class="navbar navbar-light" style="background-color: whitesmoke;text-align: center">
-        <span class="navbar-brand">Estribos Hermanos Flores - Cotizacion</span>
+<body style="background-color: #f4f5f7">
+    <nav class="navbar" style="background-color: #dee2e6">
+        <div class="container">
+            <a class="navbar-brand">Cotización - Estribos Hermanos Flores</a>
+        </div>
     </nav>
 
     <form style="padding: 25px">
+
         <div class="row">
             <div class="col">
-                <label>Pedido(Kg)</label>
-                <input type="text" id="PedidoV" class="form-control" placeholder="Ingrese cantidad solicitada">
+                <div class="form-group">
+                    <label f>Pedido (Kg)</label>
+                    <input type="text" class="form-control form-control-alternative" id="PedidoV" placeholder="Ingrese cantidad solicitada">
+                </div>
             </div>
             <div class="col">
-                <label>Precio Cliente</label>
-                <input type="text" id="PrecioC" class="form-control" value="25">
-            </div>
-        </div>
-        <div class="row" style="padding-top: 25px">
-            <div class="col">
-                <label>Costo Material</label>
-                <input type="text" id="CostoM" class="form-control" placeholder="Costo de material">
-            </div>
-            <div class="col">
-                <label>Calcular</label>
-                <br>
-                <button onclick="return Calculo();" class="btn btn-secondary">Calcular Importe</button>
+                <div class="form-group">
+                    <label f>Precio Cliente (Kg)</label>
+                    <input type="text" class="form-control form-control-alternative" id="PrecioC" placeholder="Precio sugerido $25">
+                </div>
             </div>
         </div>
-        <div class="row" style="padding-top: 25px">
+        <div class="row">
             <div class="col">
-                <label>Utilidad</label>
-                <input type="text" id="Util" class="form-control" placeholder="0.00" readonly>
+                <div class="form-group">
+                    <label f>Costo Material</label>
+                    <input type="text" class="form-control form-control-alternative" id="CostoM" placeholder="Costo real del material">
+                </div>
             </div>
             <div class="col">
-                <label>Importe Total</label>
-                <input type="text" id="ImpTot" class="form-control" style="background-color:rgb(103, 188, 241)">
+                <div class="form-group">
+                    <label f>Importe Total</label>
+                    <input type="text" class="form-control form-control-alternative " id="ImpTot" placeholder="0.00" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label f>Utilidad</label>
+                    <input type="text" class="form-control form-control-alternative" id="Util" placeholder="0.00" disabled>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Calcular</label>
+                    <button type="button" onclick="return Calculo()" class="btn btn-primary btn-lg btn-block">Calcular</button>
+                </div>
             </div>
         </div>
     </form>
-    <hr>
-
-    <div class="card">
-        <div class="card-header">Estimación</div>
-        <div class="row" style="padding: 25px">
-            <div class="col">
-                <label>Piezas Solicitadas</label>
-                <input type="text" class="form-control" placeholder="0.00">
-            </div>
-            <div class="col">
-                <label>Kilogramos Solicitados</label>
-                <input type="text" class="form-control" placeholder="0.00">
-            </div>
-        </div>
-
-        <div class="row" style="padding-left: 25px; padding-right: 25px; padding-bottom: 25px">
-            <div class="col">
-                <label>Longitud de la Vara</label>
-                <input type="text" class="form-control" placeholder="0.00">
-            </div>
-            <div class="col">
-                <label>Calculo Estimación</label>
-                <br>
-                <button class="btn btn-secondary">Calcular</button>
-            </div>
-        </div>
-
-        <div class="row" style="padding-left: 25px; padding-right: 25px; padding-bottom: 25px">
-            <div class="col">
-                <label>Piezas Estimadas</label>
-                <input type="text" class="form-control" placeholder="0.00" readonly>
-            </div>
-            <div class="col">
-                <label>Kilogramos Estimadas</label>
-                <input type="text" class="form-control" placeholder="0.00" readonly>
-            </div>
-        </div>
-
+    <div class="card card-header" style="background-color: #dee2e6">
+        <span> Estimación de costo</span>
     </div>
+    <form style="padding: 25px">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label f>Piezas Solicitadas</label>
+                    <input type="text" class="form-control form-control-alternative" id="PzaSol" placeholder="Ingrese piezas solicitada">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>kilogramos Estimados</label>
+                    <input type="text" class="form-control form-control-alternative" id="KgEst" placeholder="0.00" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label f>Kilogramos Solicitados</label>
+                    <input type="text" class="form-control form-control-alternative" id="KgSol" placeholder="Ingrese kilogramos solicitados">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label f>Piezas Estimadas</label>
+                    <input type="text" class="form-control form-control-alternative" id="PzaEst" placeholder="0.00" disabled>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label f>Longitud Varilla (Cm)</label>
+                    <input type="text" class="form-control form-control-alternative" id="LongVara" placeholder="Ingrese longitud de la varilla">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label f>Calcular</label>
+                    <button type="button" onclick="return CalculoE();" class="btn btn-primary btn-lg btn-block">Calcular</button> </div>
+            </div>
+        </div>
+    </form>
 
 </body>
+
+
+
+<!-- Core -->
+<script src="https://mfloresz.github.io/ehf/assets/vendor/jquery/jquery.min.js"></script>
+<script src="https://mfloresz.github.io/ehf/assets/vendor/popper/popper.min.js"></script>
+<script src="https://mfloresz.github.io/ehf/assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+<!-- Optional plugins -->
+<script src="https://mfloresz.github.io/ehf/assets/vendor/PLUGIN_FOLDER/PLUGIN_SCRIPT.js"></script>
+
+<!-- Theme JS -->
+<script src="https://mfloresz.github.io/ehf/assets/js/argon.js"></script>
+
+<!-- Calculos -->
+<script src="https://mfloresz.github.io/ehf/assets/js/code.js"></script>
+
 
 </html>
