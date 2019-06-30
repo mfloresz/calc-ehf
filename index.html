@@ -145,7 +145,7 @@
           <button type="button" onclick="return CalculoE();" class="btn btn-primary btn-lg btn-block">Calcular</button> </div>
       </div>
     </div>
-    <div >
+    <div>
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Lista de Medidas</button>
 
@@ -155,18 +155,144 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Tabla de Medidas</h5>
-
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="modal-body" style="height: 300px">
-              <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQRUpzc2Q7_Nv7aDuCH3VrkNcYPD-gznKL33FpYnanipwKhyp-nLXdXG4VfGLZZzyusJxjjwHBZTSJF/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" width="100%"
-                height="100%"></iframe>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <div class="modal-body" style="overflow: scroll;height: 300px">
+              <div class="container">
+                <table class="table table-striped table-sm">
+                  <thead>
+                    <tr >
+                      <th>ESTRIBO</th>
+                      <th>&nbsp;</th>
+                      <th>TRIANGULO</th>
+                      <th>&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>MEDIDA</td>
+                      <td>LONGITUD</td>
+                      <td>MEDIDA</td>
+                      <td>LONGITUD</td>
+                    </tr>
+                    <tr>
+                      <td>09 cm x 08 cm</td>
+                      <td>31</td>
+                      <td>09 cm x 08 cm</td>
+                      <td>31</td>
+                    </tr>
+                    <tr>
+                      <td>10 cm x 10 cm</td>
+                      <td>42</td>
+                      <td>10 cm x 10 cm</td>
+                      <td>42</td>
+                    </tr>
+                    <tr>
+                      <td>10 cm x 15 cm</td>
+                      <td>60</td>
+                      <td>10 cm x 15 cm</td>
+                      <td>60</td>
+                    </tr>
+                    <tr>
+                      <td>10 cm x 18 cm</td>
+                      <td>57</td>
+                      <td>10 cm x 18 cm</td>
+                      <td>57</td>
+                    </tr>
+                    <tr>
+                      <td>10 cm x 20 cm</td>
+                      <td>62</td>
+                      <td>10 cm x 20 cm</td>
+                      <td>62</td>
+                    </tr>
+                    <tr>
+                      <td>11 cm x 18 cm</td>
+                      <td>64</td>
+                      <td>11 cm x 18 cm</td>
+                      <td>64</td>
+                    </tr>
+                    <tr>
+                      <td>11 cm x 20 cm</td>
+                      <td>64</td>
+                      <td>11 cm x 20 cm</td>
+                      <td>64</td>
+                    </tr>
+                    <tr>
+                      <td>15 cm x 15 cm</td>
+                      <td>62</td>
+                      <td>15 cm x 15 cm</td>
+                      <td>62</td>
+                    </tr>
+                    <tr>
+                      <td>15 cm x 20 cm</td>
+                      <td>74</td>
+                      <td>15 cm x 20 cm</td>
+                      <td>74</td>
+                    </tr>
+                    <tr>
+                      <td>17 cm x 09 cm</td>
+                      <td>54</td>
+                      <td>17 cm x 09 cm</td>
+                      <td>54</td>
+                    </tr>
+                    <tr>
+                      <td>17 cm x 17 cm</td>
+                      <td>72</td>
+                      <td>17 cm x 17 cm</td>
+                      <td>72</td>
+                    </tr>
+                    <tr>
+                      <td>17 cm x 20 cm</td>
+                      <td>74</td>
+                      <td>17 cm x 20 cm</td>
+                      <td>74</td>
+                    </tr>
+                    <tr>
+                      <td>18 cm x 18 cm</td>
+                      <td>74</td>
+                      <td>18 cm x 18 cm</td>
+                      <td>74</td>
+                    </tr>
+                    <tr>
+                      <td>20 cm x 20 cm</td>
+                      <td>81</td>
+                      <td>20 cm x 20 cm</td>
+                      <td>81</td>
+                    </tr>
+                    <tr>
+                      <td>22 cm x 22 cm</td>
+                      <td>96</td>
+                      <td>22 cm x 22 cm</td>
+                      <td>96</td>
+                    </tr>
+                    <tr>
+                      <td>25 cm x 25 cm</td>
+                      <td>104</td>
+                      <td>25 cm x 25 cm</td>
+                      <td>104</td>
+                    </tr>
+                    <tr>
+                      <td>25 cm x 30 cm</td>
+                      <td>111</td>
+                      <td>25 cm x 30 cm</td>
+                      <td>111</td>
+                    </tr>
+                    <tr>
+                      <td>40 cm x 40 cm</td>
+                      <td>170</td>
+                      <td>&nbsp;</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </form>
 
