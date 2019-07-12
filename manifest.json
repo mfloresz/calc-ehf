@@ -1,9 +1,9 @@
 {"dir" : "ltr",
     "lang" : "es",
     "name" : "Calculadora EHF",
-    "scope" : "https://mfloresz.github.io/ehf/",
+    "scope" : "https://mfloresz.github.io/calc-ehf/",
     "display" : "standalone",
-    "start_url" : "https://mfloresz.github.io/ehf/",
+    "start_url" : "https://mfloresz.github.io/calc-ehf/",
     "short_name" : "CalcEHF",
     "theme_color" : "#dee2e6",
     "description" : "Cotizzación - Estribos Hermanos Flores",
@@ -14,7 +14,7 @@
     "generated" : "true",
     "icons" : [
         {
-    "src": "https://mfloresz.github.io/ehf/Icon.png",
+    "src": "https://mfloresz.github.io/calc-ehf/Icon.png",
     "sizes": "512x512",
     "type": "image/png"
   }
