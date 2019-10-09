@@ -8,19 +8,38 @@
   <title>Cotización EHF</title>
 
   <!-- Favicon -->
-  <link href="https://mfloresz.github.io/calc-ehf/assets/img/brand/favicon.png" rel="icon" type="image/png">
+  <link href="/assets/img/brand/favicon.png" rel="icon" type="image/png">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
   <!-- Icons -->
-  <link href="https://mfloresz.github.io/calc-ehf/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-  <link href="https://mfloresz.github.io/calc-ehf/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
   <!-- Argon CSS -->
-  <link type="text/css" href="https://mfloresz.github.io/calc-ehf/assets/css/argon.css" rel="stylesheet">
+  <link type="text/css" href="/assets/css/argon.css" rel="stylesheet">
 
-  <link rel="manifest" href="https://mfloresz.github.io/calc-ehf/manifest.json">
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    @media only screen and (min-width: 1100px) {
+      #Princ {
+        float: left;
+        width: 50%;
+        overflow: hidden;
+      }
+
+      #Est>div {
+        display: none;
+      }
+      .navbar-brand{
+        margin-left: 35%;
+      }
+       #moddal {
+         display: none;
+       }
+    }
+  </style>
   <script>
     // This is the service worker with the Cache-first network
 
@@ -36,7 +55,7 @@
           .register("pwabuilder-sw.js", {
             scope: "https://mfloresz.github.io/calc-ehf/"
           })
-          .then(function(reg) {
+          .then(function (reg) {
             console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
           });
       }
@@ -49,270 +68,412 @@
 <body style="background-color: #f4f5f7">
   <nav class="navbar" style="background-color: #dee2e6">
     <div class="container">
-      <i class="ni ni-money-coins"></i>
-      <a class="navbar-brand" style="position: absolute;padding-left: 50px;">Cotización - Estribos Hermanos Flores</a>
+      <a class="navbar-brand">Cotización - Estribos Hermanos Flores</a>
     </div>
   </nav>
+  <div id="Princ">
+    <form style="padding: 25px">
 
-  <form style="padding: 25px">
-
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label f>Pedido (Kg)</label>
-          <input type="text" class="form-control form-control-alternative" id="PedidoV" placeholder="Ingrese cantidad solicitada">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label f>Pedido (Kg)</label>
+            <input type="text" class="form-control form-control-alternative" id="PedidoV"
+              placeholder="Ingrese cantidad solicitada">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label f>Precio Cliente (Kg)</label>
+            <input type="text" class="form-control form-control-alternative" id="PrecioC"
+              placeholder="Precio sugerido $25">
+          </div>
         </div>
       </div>
-      <div class="col">
-        <div class="form-group">
-          <label f>Precio Cliente (Kg)</label>
-          <input type="text" class="form-control form-control-alternative" id="PrecioC" placeholder="Precio sugerido $25">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label f>Costo Material</label>
+            <input type="text" class="form-control form-control-alternative" id="CostoM"
+              placeholder="Costo real del material">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label f>Importe Total</label>
+            <input type="text" class="form-control form-control-alternative " id="ImpTot" placeholder="0.00" disabled>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label f>Costo Material</label>
-          <input type="text" class="form-control form-control-alternative" id="CostoM" placeholder="Costo real del material">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label f>Utilidad</label>
+            <input type="text" class="form-control form-control-alternative" id="Util" placeholder="0.00" disabled>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label>Calcular</label>
+            <button type="button" onclick="return Calculo()" class="btn btn-primary btn-lg btn-block">Calcular</button>
+          </div>
         </div>
       </div>
-      <div class="col">
-        <div class="form-group">
-          <label f>Importe Total</label>
-          <input type="text" class="form-control form-control-alternative " id="ImpTot" placeholder="0.00" disabled>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label f>Utilidad</label>
-          <input type="text" class="form-control form-control-alternative" id="Util" placeholder="0.00" disabled>
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label>Calcular</label>
-          <button type="button" onclick="return Calculo()" class="btn btn-primary btn-lg btn-block">Calcular</button>
-        </div>
-      </div>
-    </div>
-  </form>
-  <div class="card card-header" style="background-color: #dee2e6">
-    <span> Estimación de costo</span>
+    </form>
   </div>
-  <form style="padding: 25px">
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label f>Piezas Solicitadas</label>
-          <input type="text" class="form-control form-control-alternative" id="PzaSol" placeholder="Ingrese piezas solicitada">
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label>kilogramos Estimados</label>
-          <input type="text" class="form-control form-control-alternative" id="KgEst" placeholder="0.00" disabled>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label f>Kilogramos Solicitados</label>
-          <input type="text" class="form-control form-control-alternative" id="KgSol" placeholder="Ingrese kilogramos solicitados">
-        </div>
-      </div>
-      <div class="col">
-        <div class="form-group">
-          <label f>Piezas Estimadas</label>
-          <input type="text" class="form-control form-control-alternative" id="PzaEst" placeholder="0.00" disabled>
-        </div>
-      </div>
 
+  <div id="Est">
+
+    <div class="card card-header" style="background-color: #dee2e6">
+      <span> Estimación de costo</span>
     </div>
-    <div class="row">
-      <div class="col">
-        <div class="form-group">
-          <label f>Longitud Varilla (Cm)</label>
-          <input type="text" class="form-control form-control-alternative" id="LongVara" placeholder="Ingrese longitud de la varilla">
+    <form style="padding: 25px">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label f>Piezas Solicitadas</label>
+            <input type="text" class="form-control form-control-alternative" id="PzaSol"
+              placeholder="Ingrese piezas solicitada">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label>kilogramos Estimados</label>
+            <input type="text" class="form-control form-control-alternative" id="KgEst" placeholder="0.00" disabled>
+          </div>
         </div>
       </div>
-      <div class="col">
-        <div class="form-group">
-          <label f>Calcular</label>
-          <button type="button" onclick="return CalculoE();" class="btn btn-primary btn-lg btn-block">Calcular</button> </div>
-      </div>
-    </div>
-    <div>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Lista de Medidas</button>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label f>Kilogramos Solicitados</label>
+            <input type="text" class="form-control form-control-alternative" id="KgSol"
+              placeholder="Ingrese kilogramos solicitados">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label f>Piezas Estimadas</label>
+            <input type="text" class="form-control form-control-alternative" id="PzaEst" placeholder="0.00" disabled>
+          </div>
+        </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Tabla de Medidas</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body" style="overflow: scroll;height: 300px">
-              <div class="container">
-                <table class="table table-striped table-sm">
-                  <thead>
-                    <tr >
-                      <th>ESTRIBO</th>
-                      <th>&nbsp;</th>
-                      <th>TRIANGULO</th>
-                      <th>&nbsp;</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>MEDIDA</td>
-                      <td>LONGITUD</td>
-                      <td>MEDIDA</td>
-                      <td>LONGITUD</td>
-                    </tr>
-                    <tr>
-                      <td>09 cm x 08 cm</td>
-                      <td>31</td>
-                      <td>09 cm x 08 cm</td>
-                      <td>31</td>
-                    </tr>
-                    <tr>
-                      <td>10 cm x 10 cm</td>
-                      <td>42</td>
-                      <td>10 cm x 10 cm</td>
-                      <td>42</td>
-                    </tr>
-                    <tr>
-                      <td>10 cm x 15 cm</td>
-                      <td>60</td>
-                      <td>10 cm x 15 cm</td>
-                      <td>60</td>
-                    </tr>
-                    <tr>
-                      <td>10 cm x 18 cm</td>
-                      <td>57</td>
-                      <td>10 cm x 18 cm</td>
-                      <td>57</td>
-                    </tr>
-                    <tr>
-                      <td>10 cm x 20 cm</td>
-                      <td>62</td>
-                      <td>10 cm x 20 cm</td>
-                      <td>62</td>
-                    </tr>
-                    <tr>
-                      <td>11 cm x 18 cm</td>
-                      <td>64</td>
-                      <td>11 cm x 18 cm</td>
-                      <td>64</td>
-                    </tr>
-                    <tr>
-                      <td>11 cm x 20 cm</td>
-                      <td>64</td>
-                      <td>11 cm x 20 cm</td>
-                      <td>64</td>
-                    </tr>
-                    <tr>
-                      <td>15 cm x 15 cm</td>
-                      <td>62</td>
-                      <td>15 cm x 15 cm</td>
-                      <td>62</td>
-                    </tr>
-                    <tr>
-                      <td>15 cm x 20 cm</td>
-                      <td>74</td>
-                      <td>15 cm x 20 cm</td>
-                      <td>74</td>
-                    </tr>
-                    <tr>
-                      <td>17 cm x 09 cm</td>
-                      <td>54</td>
-                      <td>17 cm x 09 cm</td>
-                      <td>54</td>
-                    </tr>
-                    <tr>
-                      <td>17 cm x 17 cm</td>
-                      <td>72</td>
-                      <td>17 cm x 17 cm</td>
-                      <td>72</td>
-                    </tr>
-                    <tr>
-                      <td>17 cm x 20 cm</td>
-                      <td>74</td>
-                      <td>17 cm x 20 cm</td>
-                      <td>74</td>
-                    </tr>
-                    <tr>
-                      <td>18 cm x 18 cm</td>
-                      <td>74</td>
-                      <td>18 cm x 18 cm</td>
-                      <td>74</td>
-                    </tr>
-                    <tr>
-                      <td>20 cm x 20 cm</td>
-                      <td>81</td>
-                      <td>20 cm x 20 cm</td>
-                      <td>81</td>
-                    </tr>
-                    <tr>
-                      <td>22 cm x 22 cm</td>
-                      <td>96</td>
-                      <td>22 cm x 22 cm</td>
-                      <td>96</td>
-                    </tr>
-                    <tr>
-                      <td>25 cm x 25 cm</td>
-                      <td>104</td>
-                      <td>25 cm x 25 cm</td>
-                      <td>104</td>
-                    </tr>
-                    <tr>
-                      <td>25 cm x 30 cm</td>
-                      <td>111</td>
-                      <td>25 cm x 30 cm</td>
-                      <td>111</td>
-                    </tr>
-                    <tr>
-                      <td>40 cm x 40 cm</td>
-                      <td>170</td>
-                      <td>&nbsp;</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label f>Longitud Varilla (Cm)</label>
+            <input type="text" class="form-control form-control-alternative" id="LongVara"
+              placeholder="Ingrese longitud de la varilla">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label f>Calcular</label>
+            <button type="button" onclick="return CalculoE();"
+              class="btn btn-primary btn-lg btn-block">Calcular</button> </div>
+        </div>
+      </div>
+      <div id="moddal">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Lista de
+          Medidas</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tabla de Medidas</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body" style="overflow: scroll;height: 300px">
+                <div class="container">
+                  <table class="table table-striped table-sm">
+                    <thead>
+                      <tr>
+                        <th>ESTRIBO</th>
+                        <th>&nbsp;</th>
+                        <th>TRIANGULO</th>
+                        <th>&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>MEDIDA</td>
+                        <td>LONGITUD</td>
+                        <td>MEDIDA</td>
+                        <td>LONGITUD</td>
+                      </tr>
+                      <tr>
+                        <td>09 cm x 08 cm</td>
+                        <td>31</td>
+                        <td>09 cm x 08 cm</td>
+                        <td>31</td>
+                      </tr>
+                      <tr>
+                        <td>10 cm x 10 cm</td>
+                        <td>42</td>
+                        <td>10 cm x 10 cm</td>
+                        <td>42</td>
+                      </tr>
+                      <tr>
+                        <td>10 cm x 15 cm</td>
+                        <td>60</td>
+                        <td>10 cm x 15 cm</td>
+                        <td>60</td>
+                      </tr>
+                      <tr>
+                        <td>10 cm x 18 cm</td>
+                        <td>57</td>
+                        <td>10 cm x 18 cm</td>
+                        <td>57</td>
+                      </tr>
+                      <tr>
+                        <td>10 cm x 20 cm</td>
+                        <td>62</td>
+                        <td>10 cm x 20 cm</td>
+                        <td>62</td>
+                      </tr>
+                      <tr>
+                        <td>11 cm x 18 cm</td>
+                        <td>64</td>
+                        <td>11 cm x 18 cm</td>
+                        <td>64</td>
+                      </tr>
+                      <tr>
+                        <td>11 cm x 20 cm</td>
+                        <td>64</td>
+                        <td>11 cm x 20 cm</td>
+                        <td>64</td>
+                      </tr>
+                      <tr>
+                        <td>15 cm x 15 cm</td>
+                        <td>62</td>
+                        <td>15 cm x 15 cm</td>
+                        <td>62</td>
+                      </tr>
+                      <tr>
+                        <td>15 cm x 20 cm</td>
+                        <td>74</td>
+                        <td>15 cm x 20 cm</td>
+                        <td>74</td>
+                      </tr>
+                      <tr>
+                        <td>17 cm x 09 cm</td>
+                        <td>54</td>
+                        <td>17 cm x 09 cm</td>
+                        <td>54</td>
+                      </tr>
+                      <tr>
+                        <td>17 cm x 17 cm</td>
+                        <td>72</td>
+                        <td>17 cm x 17 cm</td>
+                        <td>72</td>
+                      </tr>
+                      <tr>
+                        <td>17 cm x 20 cm</td>
+                        <td>74</td>
+                        <td>17 cm x 20 cm</td>
+                        <td>74</td>
+                      </tr>
+                      <tr>
+                        <td>18 cm x 18 cm</td>
+                        <td>74</td>
+                        <td>18 cm x 18 cm</td>
+                        <td>74</td>
+                      </tr>
+                      <tr>
+                        <td>20 cm x 20 cm</td>
+                        <td>81</td>
+                        <td>20 cm x 20 cm</td>
+                        <td>81</td>
+                      </tr>
+                      <tr>
+                        <td>22 cm x 22 cm</td>
+                        <td>96</td>
+                        <td>22 cm x 22 cm</td>
+                        <td>96</td>
+                      </tr>
+                      <tr>
+                        <td>25 cm x 25 cm</td>
+                        <td>104</td>
+                        <td>25 cm x 25 cm</td>
+                        <td>104</td>
+                      </tr>
+                      <tr>
+                        <td>25 cm x 30 cm</td>
+                        <td>111</td>
+                        <td>25 cm x 30 cm</td>
+                        <td>111</td>
+                      </tr>
+                      <tr>
+                        <td>40 cm x 40 cm</td>
+                        <td>170</td>
+                        <td>&nbsp;</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    </div>
+  </div>
   </form>
-
+  </div>
+<div id="tabb" style="overflow: scroll;height:250px;">
+  <div class="container">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>ESTRIBO</th>
+          <th>&nbsp;</th>
+          <th>TRIANGULO</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MEDIDA</td>
+          <td>LONGITUD</td>
+          <td>MEDIDA</td>
+          <td>LONGITUD</td>
+        </tr>
+        <tr>
+          <td>09 cm x 08 cm</td>
+          <td>31</td>
+          <td>09 cm x 08 cm</td>
+          <td>31</td>
+        </tr>
+        <tr>
+          <td>10 cm x 10 cm</td>
+          <td>42</td>
+          <td>10 cm x 10 cm</td>
+          <td>42</td>
+        </tr>
+        <tr>
+          <td>10 cm x 15 cm</td>
+          <td>60</td>
+          <td>10 cm x 15 cm</td>
+          <td>60</td>
+        </tr>
+        <tr>
+          <td>10 cm x 18 cm</td>
+          <td>57</td>
+          <td>10 cm x 18 cm</td>
+          <td>57</td>
+        </tr>
+        <tr>
+          <td>10 cm x 20 cm</td>
+          <td>62</td>
+          <td>10 cm x 20 cm</td>
+          <td>62</td>
+        </tr>
+        <tr>
+          <td>11 cm x 18 cm</td>
+          <td>64</td>
+          <td>11 cm x 18 cm</td>
+          <td>64</td>
+        </tr>
+        <tr>
+          <td>11 cm x 20 cm</td>
+          <td>64</td>
+          <td>11 cm x 20 cm</td>
+          <td>64</td>
+        </tr>
+        <tr>
+          <td>15 cm x 15 cm</td>
+          <td>62</td>
+          <td>15 cm x 15 cm</td>
+          <td>62</td>
+        </tr>
+        <tr>
+          <td>15 cm x 20 cm</td>
+          <td>74</td>
+          <td>15 cm x 20 cm</td>
+          <td>74</td>
+        </tr>
+        <tr>
+          <td>17 cm x 09 cm</td>
+          <td>54</td>
+          <td>17 cm x 09 cm</td>
+          <td>54</td>
+        </tr>
+        <tr>
+          <td>17 cm x 17 cm</td>
+          <td>72</td>
+          <td>17 cm x 17 cm</td>
+          <td>72</td>
+        </tr>
+        <tr>
+          <td>17 cm x 20 cm</td>
+          <td>74</td>
+          <td>17 cm x 20 cm</td>
+          <td>74</td>
+        </tr>
+        <tr>
+          <td>18 cm x 18 cm</td>
+          <td>74</td>
+          <td>18 cm x 18 cm</td>
+          <td>74</td>
+        </tr>
+        <tr>
+          <td>20 cm x 20 cm</td>
+          <td>81</td>
+          <td>20 cm x 20 cm</td>
+          <td>81</td>
+        </tr>
+        <tr>
+          <td>22 cm x 22 cm</td>
+          <td>96</td>
+          <td>22 cm x 22 cm</td>
+          <td>96</td>
+        </tr>
+        <tr>
+          <td>25 cm x 25 cm</td>
+          <td>104</td>
+          <td>25 cm x 25 cm</td>
+          <td>104</td>
+        </tr>
+        <tr>
+          <td>25 cm x 30 cm</td>
+          <td>111</td>
+          <td>25 cm x 30 cm</td>
+          <td>111</td>
+        </tr>
+        <tr>
+          <td>40 cm x 40 cm</td>
+          <td>170</td>
+          <td>&nbsp;</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 </body>
 
 
 
 <!-- Core -->
-<script src="https://mfloresz.github.io/calc-ehf/assets/vendor/jquery/jquery.min.js"></script>
-<script src="https://mfloresz.github.io/calc-ehf/assets/vendor/popper/popper.min.js"></script>
-<script src="https://mfloresz.github.io/calc-ehf/assets/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/popper/popper.min.js"></script>
+<script src="/assets/vendor/bootstrap/bootstrap.min.js"></script>
 
 <!-- Optional plugins -->
-<script src="https://mfloresz.github.io/calc-ehf/assets/vendor/PLUGIN_FOLDER/PLUGIN_SCRIPT.js"></script>
+<script src="/assets/vendor/PLUGIN_FOLDER/PLUGIN_SCRIPT.js"></script>
 
 <!-- Theme JS -->
-<script src="https://mfloresz.github.io/calc-ehf/assets/js/argon.js"></script>
+<script src="/assets/js/argon.js"></script>
 
 <!-- Calculos -->
-<script src="https://mfloresz.github.io/calc-ehf/assets/js/code.js"></script>
+<script src="/assets/js/code.js"></script>
 
 
 </html>
