@@ -45,18 +45,23 @@ function Formato() {
     document.getElementById("Util").value = formatMoney(document.getElementById("Util").value);
 };
 
+// Estimar Piezas
 function EstPza() {
     var Num4 = Number(document.getElementById('LongVara').value)
     var Num5 = Number(document.getElementById('KgSol').value)
-    var EstimPza = (1000 / (Num4 * 2.515)) * Num5;
+    var EstimPza = (Num4 * 2.515);
+    var EstimPza = EstimPza + ( EstimPza * 0.06);
+    var EstimPza = (1000 / EstimPza) * Num5;
+    var EstimPza = Math.round(EstimPza);
     document.getElementById('PzaEst').value = EstimPza;
     return false
 }
-
+// Estimar Kilogramos
 function EstKg() {
     var Num6 = Number(document.getElementById('LongVara').value)
     var Num7 = Number(document.getElementById('PzaSol').value)
     var EstimKg = ((Num6 * 2.515) * Num7) / 1000;
+    var EstimKg = EstimKg + (EstimKg * 0.06);
     document.getElementById('KgEst').value = EstimKg;
     return false
 }
