@@ -61,7 +61,7 @@ function EstKg() {
     var Num6 = Number(document.getElementById('LongVara').value)
     var Num7 = Number(document.getElementById('PzaSol').value)
     var EstimKg = ((Num6 * 2.515) * Num7) / 1000;
-    var EstimKg = EstimKg + (EstimKg * 0.06);
+    var EstimKg = EstimKg + (EstimKg * 0.07);
     document.getElementById('KgEst').value = EstimKg;
     return false
 }
