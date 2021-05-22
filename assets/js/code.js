@@ -17,6 +17,21 @@ function CalcUt() {
     return false
 }
 
+function Sumar() {
+    var KgI = Number(document.getElementById('PedidoV').value)
+    var KgA = Number(document.getElementById('KgEst').value)
+    var KgF = (KgI + KgA);
+    document.getElementById('PedidoV').value = KgF;
+    return false
+}
+
+function CSumar() {
+    Sumar()
+    CalcImp();
+    CalcUt();
+    Formato();
+    return false
+}
 function Calculo() {
     CalcImp();
     CalcUt();
