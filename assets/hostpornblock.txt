@@ -1,3 +1,5 @@
 ##.ad
 ##.ad[style^="display:none"]
 ##.ad { display:none; }
+xataka.com.mx#@#.ad { display:none !important; visibility: none !important; orphans: 4321 !important; }
+##.ad { display:none !important; visibility: none !important; orphans: 4321 !important; }
